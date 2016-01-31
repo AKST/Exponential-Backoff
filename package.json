@@ -1,11 +1,12 @@
 {
   "name": "bullet-time",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "expotenial backoff for js",
   "author": "akst",
   "main": "dist/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel src -d dist"
+    "build": "./node_modules/.bin/babel src -d dist",
+    "prepublish": "npm run build"
   },
   "engines": {
     "iojs": "3.2.0"
