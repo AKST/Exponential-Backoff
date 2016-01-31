@@ -21,7 +21,7 @@ export class ExpotenialBackoff {
   constructor (options = {}) {
     const {
       callback,
-      capacity,
+      capacity = Infinity,
       initial = SECOND,
       increment = DEFAULT_INC,
     } = options
@@ -77,7 +77,7 @@ export class ExpotenialBackoff {
       setTimeout(() => {
         this._invoke();
       }, this.nextWaitPeriod);
-      this._state += this._increment;
+      this._state = Math.min(this._capacity, this._state + this._increment);
     }
   }
 
