@@ -7,7 +7,7 @@ const KEYS = new WeakMap();
 
 
 class TriggerStatus {
-  constructor (didRun, promise) {
+  constructor (didRun, promise = Promise.resolve(null)) {
     this._didRun = didRun;
     this._promise = promise;
   }
@@ -65,7 +65,7 @@ export class ExpotenialBackoff {
       return new TriggerStatus(true, value);
     }
     else {
-      return new TriggerStatus(false, null);
+      return new TriggerStatus(false);
     }
   }
 
