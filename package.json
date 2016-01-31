@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "expotenial-backoff",
   "version": "0.0.1",
-  "description": "expotenial-backoff",
+  "description": "expotenial backoff for js",
   "author": "akst",
   "main": "dist/index.js",
   "scripts": {
