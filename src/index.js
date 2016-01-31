@@ -1,4 +1,3 @@
-const HALFHOUR = 1800000;
 const SECOND   = 1000;
 const INIT_STATE = 1;
 const DEFAULT_INC = 0.1;
@@ -22,7 +21,7 @@ export class ExpotenialBackoff {
   constructor (options = {}) {
     const {
       callback,
-      capacity = HALFHOUR,
+      capacity,
       initial = SECOND,
       increment = DEFAULT_INC,
     } = options
