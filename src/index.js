@@ -37,7 +37,7 @@ export class ExpotenialBackoff {
   /**
    * time since last invokation
    */
-  get idelTime () {
+  get idleTime () {
     return Date.now() - this._lastOperation;
   }
 
