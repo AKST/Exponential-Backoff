@@ -32,6 +32,7 @@ export class ExpotenialBackoff {
     this._state = INIT_STATE;
     this._callback = callback;
     this._lastOperation = -Infinity;
+    this._timeoutId = null;
   }
 
   /**
@@ -61,6 +62,10 @@ export class ExpotenialBackoff {
   trigger (key) {
     if (this._isInvokeable(key)) {
       const value = this._invoke();
+      if (this._timeoutId != null) {
+        clearTimeout(this._timeoutId);
+        this._timeoutId = null;
+      }
       return new TriggerStatus(true, value);
     }
     else {
@@ -74,7 +79,7 @@ export class ExpotenialBackoff {
    */
   queue (key) {
     if (this._isInvokeable(key)) {
-      setTimeout(() => {
+      this._timeoutId = setTimeout(() => {
         this._invoke();
       }, this.nextWaitPeriod);
       this._state = Math.min(this._capacity, this._state + this._increment);
